@@ -21,16 +21,19 @@ class ViewController: UIViewController {
   @IBOutlet weak var transactionsAllButton: UIButton!
   
   @IBOutlet weak var chartView: LineChartView!
-    
+  
+  @IBOutlet weak var gradientView: UIView!
+  
   var demoTransactions: [Transaction] = []
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
-      .lightContent
+    .lightContent
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setupChartLayout()
+    addGradient()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +46,21 @@ class ViewController: UIViewController {
     updateGraph()
     demoTransactions = prepareTransactionsDemoData()
     transactionTableView.reloadData()
+  }
+  
+  private func addGradient() {
+    let colorTop = UIColor(red: 35.0 / 255.0, green: 210.0 / 255.0, blue: 221.0 / 255.0, alpha: 1.0).cgColor
+    let colorBottom = UIColor(red: 29.0 / 255.0, green: 96.0 / 255.0, blue: 225.0 / 255.0, alpha: 1.0).cgColor
+    
+    let gradientLayer = CAGradientLayer()
+    gradientLayer.colors = [colorTop, colorBottom]
+    gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+    gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+    gradientLayer.frame = gradientView.bounds
+    
+    gradientView.layer.insertSublayer(gradientLayer, at: 0)
+    gradientView.layer.cornerRadius = 20
+    gradientView.clipsToBounds = true
   }
 }
 
@@ -60,11 +78,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     return transactions
   }
   
-  public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return demoTransactions.count
   }
   
-  public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = transactionTableView.dequeueReusableCell(withIdentifier: "transactionCell") as! TransactionTableViewCell
     cell.setupWith(transaction: demoTransactions[indexPath.row])
     return cell

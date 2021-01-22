@@ -34,11 +34,19 @@ extension ViewController {
     }
     
     let lineDataSet = LineChartDataSet(entries: lineChartEntries)
-    lineDataSet.colors = [UIColor(displayP3Red: 91 / 255, green: 201 / 255, blue: 250 / 255, alpha: 1.0)]
+    lineDataSet.colors = [UIColor(displayP3Red: 91.0 / 255.0, green: 201.0 / 255.0, blue: 250.0 / 255.0, alpha: 1.0)]
     lineDataSet.drawValuesEnabled = false
     lineDataSet.drawCirclesEnabled = false
+    lineDataSet.drawFilledEnabled = true
+
     lineDataSet.mode = .cubicBezier
     lineDataSet.lineWidth = 3
+
+    let gradientColors = [lineDataSet.colors[0].cgColor, UIColor.white.cgColor]
+    let colorLocations: [CGFloat] = [1.0, 0.0]
+    if let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: colorLocations) {
+      lineDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
+    }
     
     let data = LineChartData()
     data.addDataSet(lineDataSet)

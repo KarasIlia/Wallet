@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import WebKit
 
 class AuthenticationViewController: UIViewController {
   
@@ -14,33 +13,28 @@ class AuthenticationViewController: UIViewController {
   @IBOutlet weak var emailTextField: UITextField!
   @IBOutlet weak var passwordTextField: UITextField!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-  @IBOutlet weak var signInCardView: UIView!
-    
-//  override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-//    if UIDevice.current.userInterfaceIdiom == .phone {
-//      return .portrait
-//    } else {
-//      return .all
-//    }
-//  }
+  @IBOutlet weak var joinButton: UIButton!
+  @IBOutlet weak var gradientView: UIView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     tapGestureRecognition()
-//    setupShowPasswordButton()
+    setupUI()
+    //    setupShowPasswordButton()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    addObservers()
-    // Force portrait orientation
-    let value = UIInterfaceOrientation.portrait.rawValue
-    UIDevice.current.setValue(value, forKey: "orientation")
+    //    addObservers()
   }
   
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     removeObservers()
+  }
+    
+  private func setupUI() {
+    joinButton.layer.cornerRadius = joinButton.layer.bounds.size.height / 2
   }
   
   private func setupShowPasswordButton() {
@@ -52,11 +46,6 @@ class AuthenticationViewController: UIViewController {
     button.addTarget(self, action: #selector(togglePasswordShow), for: .touchUpInside)
     passwordTextField.rightView = button
     passwordTextField.rightViewMode = .always
-  }
-  
-  @objc
-  func togglePasswordShow() {
-    passwordTextField.isSecureTextEntry.toggle()
   }
   
   private func login(email: String?, password: String?) {
@@ -78,25 +67,31 @@ class AuthenticationViewController: UIViewController {
     }
   }
   
+  @objc
+  func togglePasswordShow() {
+    passwordTextField.isSecureTextEntry.toggle()
+  }
+  
   @IBAction func textFieldEditingDidChange(_ sender: UITextField) {
-//    print("textFieldDidChangeSelection")
-//    do {
-//      let validationType: ValidatorType = sender == emailTextField ? .email : .password
-//      _ = try sender.validatedText(validationType: validationType)
-//      sender.layer.borderColor = UIColor.lightGray.cgColor
-//      sender.layer.borderWidth = 1.0
-//      sender.layer.cornerRadius = 5
-//    } catch /*(let error)*/ {
-//      sender.layer.borderColor = UIColor.red.cgColor
-//      sender.layer.borderWidth = 1.0
-//      sender.layer.cornerRadius = 5
-//      //          showAlert(with: nil, message: (error as! ValidationError).message)
-//    }
+    //    print("textFieldDidChangeSelection")
+    //    do {
+    //      let validationType: ValidatorType = sender == emailTextField ? .email : .password
+    //      _ = try sender.validatedText(validationType: validationType)
+    //      sender.layer.borderColor = UIColor.lightGray.cgColor
+    //      sender.layer.borderWidth = 1.0
+    //      sender.layer.cornerRadius = 5
+    //    } catch /*(let error)*/ {
+    //      sender.layer.borderColor = UIColor.red.cgColor
+    //      sender.layer.borderWidth = 1.0
+    //      sender.layer.cornerRadius = 5
+    //      //          showAlert(with: nil, message: (error as! ValidationError).message)
+    //    }
   }
   
   @IBAction func signInTapped() {
     view.endEditing(true)
-    login(email: emailTextField.text!, password: passwordTextField.text!)
+//    login(email: emailTextField.text!, password: passwordTextField.text!)
+    Router.shared.presentMainScreen()
   }
 }
 
@@ -141,19 +136,21 @@ extension AuthenticationViewController: UITextFieldDelegate {
     NotificationCenter.default.removeObserver(self)
   }
   
-  @objc func keyboardWillShow(notification: NSNotification) {
+  @objc
+  func keyboardWillShow(notification: NSNotification) {
     guard
       let userInfo = notification.userInfo,
       let frame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-      else {
-        return
+    else {
+      return
     }
     
     let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: frame.height, right: 0)
     scrollView.contentInset = contentInset
   }
   
-  @objc func keyboardWillHide(notification: NSNotification) {
+  @objc
+  func keyboardWillHide(notification: NSNotification) {
     scrollView.contentInset = UIEdgeInsets.zero
   }
 }

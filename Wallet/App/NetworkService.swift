@@ -25,7 +25,7 @@ class NetworkService {
   
   private init() {}
   
-  let domain = "https://wallet.online/"
+  let domain = "https://wallet.com/"
   let languageCode = Locale.current.languageCode ?? "en"
   var accessToken: String {
     AuthService.getAccessToken() ?? "no token found"
@@ -77,14 +77,14 @@ class NetworkService {
   func register(
     email: String,
     password: String,
-    invite: String,
+    name: String,
     completion: @escaping (Result<JSON, ResponseError>) -> Void
   ) {
     DispatchQueue.global(qos: .userInitiated).async {
       let urlString = "\(self.domain)api/users"
       let registrationData = ["email": email,
                               "password": password,
-                              "invite": invite]
+                              "name": name]
       
       AF.request(
         urlString,

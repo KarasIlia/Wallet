@@ -10,23 +10,13 @@ import UIKit
 class RegistrationViewController: UIViewController {
   
   @IBOutlet weak var scrollView: UIScrollView!
-  @IBOutlet weak var registrationCard: UIView!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   @IBOutlet weak var emailTextField: UITextField!
   @IBOutlet weak var passwordTextField: UITextField!
-  @IBOutlet weak var inviteTextField: UITextField!
-  
-  override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-      if UIDevice.current.userInterfaceIdiom == .phone {
-          return .portrait
-      } else {
-          return .all
-      }
-  }
+  @IBOutlet weak var nameTextField: UITextField!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    registrationCard.layer.cornerRadius = 4
     tapGestureRecognition()
   }
   
@@ -43,7 +33,7 @@ class RegistrationViewController: UIViewController {
   func register(
     email: String,
     password: String,
-    invite: String
+    name: String
   ) {
     activityIndicator.startAnimating()
     activityIndicator.isHidden = false
@@ -52,7 +42,7 @@ class RegistrationViewController: UIViewController {
       NetworkService.shared.register(
         email: email,
         password: password,
-        invite: invite
+        name: name
       ) { [self] (result) in
         switch result {
         case .success(_):
@@ -73,7 +63,7 @@ class RegistrationViewController: UIViewController {
     register(
       email: emailTextField.text!,
       password: passwordTextField.text!,
-      invite: inviteTextField.text!
+      name: nameTextField.text!
     )
   }
   
@@ -88,7 +78,7 @@ extension RegistrationViewController: UITextFieldDelegate {
   func textFieldsDelegateSetup() {
     emailTextField.delegate = self
     passwordTextField.delegate = self
-    inviteTextField.delegate = self
+    nameTextField.delegate = self
   }
   
   func tapGestureRecognition() {
@@ -106,9 +96,9 @@ extension RegistrationViewController: UITextFieldDelegate {
     case emailTextField:
       passwordTextField.becomeFirstResponder()
     case passwordTextField:
-      inviteTextField.becomeFirstResponder()
-    case inviteTextField:
       registerTapped()
+    case nameTextField:
+      emailTextField.becomeFirstResponder()
     default:
       break
     }

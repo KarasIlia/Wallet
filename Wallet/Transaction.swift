@@ -20,7 +20,7 @@ struct Transaction {
   
   static func getRandomTransactionType() -> TransactionType {
     let maxEnumRawValue = UInt32(TransactionType.allCases.last!.rawValue)
-    let randRaw = Int(arc4random_uniform(maxEnumRawValue))
+    let randRaw = Int(arc4random_uniform(maxEnumRawValue + 1))
     return TransactionType(rawValue: randRaw)!
   }
 }

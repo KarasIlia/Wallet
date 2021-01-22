@@ -39,8 +39,8 @@ class TransactionTableViewCell: UITableViewCell {
     }
     
     transactionTypeImage.layer.borderColor = UIColor(displayP3Red: 227 / 255, green: 227 / 255, blue: 227 / 255, alpha: 1.0).cgColor
-    transactionTypeImage.tintColor = UIColor(displayP3Red: 128 / 255, green: 128 / 255, blue: 128 / 255, alpha: 1.0)
+    transactionTypeImage.tintColor = UIColor(displayP3Red: 33 / 255, green: 166 / 255, blue: 223 / 255, alpha: 1.0)
     
-    transactionAmount.text = "\(transaction.amount) \(transaction.currency ?? "руб")"
+    transactionAmount.text = "\(transaction.amount) \(transaction.currency ?? "руб.")"
   }
 }

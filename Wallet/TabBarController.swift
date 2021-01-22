@@ -11,31 +11,31 @@ class TabBarController: UITabBarController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    disableEmptyTabBar()
+//    disableEmptyTabBar()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
-    self.view.bringSubviewToFront(self.tabBar)
-    self.addCenterButton()
+//    self.view.bringSubviewToFront(self.tabBar)
+//    self.addCenterButton()
   }
   
-  private func addCenterButton() {
-    let button = UIButton(type: .custom)
-    let square = self.tabBar.frame.size.height + 20
-    button.frame = CGRect(x: 0, y: 0, width: square, height: square)
-    button.layer.cornerRadius = square / 2
-    button.center = CGPoint(x: self.tabBar.center.x, y: self.tabBar.center.y - 40)
-    button.backgroundColor = UIColor.systemBlue
-    button.tintColor = .white
-    button.setImage(UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
-    
-    self.view.addSubview(button)
-    self.view.bringSubviewToFront(button)
-    
-    button.addTarget(self, action: #selector(didTouchCenterButton(_:)), for: .touchUpInside)
-  }
+//  private func addCenterButton() {
+//    let button = UIButton(type: .custom)
+//    let square = self.tabBar.frame.size.height + 20
+//    button.frame = CGRect(x: 0, y: 0, width: square, height: square)
+//    button.layer.cornerRadius = square / 2
+//    button.center = CGPoint(x: self.tabBar.center.x, y: self.tabBar.center.y - 40)
+//    button.backgroundColor = UIColor.systemBlue
+//    button.tintColor = .white
+//    button.setImage(UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
+//
+//    self.view.addSubview(button)
+//    self.view.bringSubviewToFront(button)
+//
+//    button.addTarget(self, action: #selector(didTouchCenterButton(_:)), for: .touchUpInside)
+//  }
   
   private func disableEmptyTabBar() {
     if

@@ -27,6 +27,9 @@
 		DE2CAFC42565491900BAEF8A /* PasswordRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2CAFC32565491900BAEF8A /* PasswordRecoveryViewController.swift */; };
 		DE2CAFC92565494400BAEF8A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2CAFC82565494400BAEF8A /* NetworkService.swift */; };
 		DE2CAFDA25654B7900BAEF8A /* UIViewController + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2CAFD925654B7900BAEF8A /* UIViewController + Extensions.swift */; };
+		DE2CAFF4256AC4C800BAEF8A /* CGFloat + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2CAFF3256AC4C800BAEF8A /* CGFloat + Extension.swift */; };
+		DE2CAFF9256ACE0200BAEF8A /* GradientedCurvedBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2CAFF8256ACE0100BAEF8A /* GradientedCurvedBackgroundView.swift */; };
+		DE2CAFFE256AD49600BAEF8A /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2CAFFD256AD49600BAEF8A /* RoundedTextField.swift */; };
 		DE3CA79E2563F6F2009F787B /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3CA79D2563F6F2009F787B /* Transaction.swift */; };
 		DE3CA7A32563F814009F787B /* ViewController + Charts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3CA7A22563F814009F787B /* ViewController + Charts.swift */; };
 		DEF747EF256543F80099615F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF747EE256543F80099615F /* Router.swift */; };
@@ -83,6 +86,9 @@
 		DE2CAFC32565491900BAEF8A /* PasswordRecoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryViewController.swift; sourceTree = "<group>"; };
 		DE2CAFC82565494400BAEF8A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		DE2CAFD925654B7900BAEF8A /* UIViewController + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extensions.swift"; sourceTree = "<group>"; };
+		DE2CAFF3256AC4C800BAEF8A /* CGFloat + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat + Extension.swift"; sourceTree = "<group>"; };
+		DE2CAFF8256ACE0100BAEF8A /* GradientedCurvedBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientedCurvedBackgroundView.swift; sourceTree = "<group>"; };
+		DE2CAFFD256AD49600BAEF8A /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
 		DE3CA79D2563F6F2009F787B /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		DE3CA7A22563F814009F787B /* ViewController + Charts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController + Charts.swift"; sourceTree = "<group>"; };
 		DEF747EE256543F80099615F /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -203,6 +209,9 @@
 				DE0314362562EC2900B0F2CB /* DesignableButton.swift */,
 				DE0314432562FFA000B0F2CB /* DesignableView.swift */,
 				DE2CAFD925654B7900BAEF8A /* UIViewController + Extensions.swift */,
+				DE2CAFF3256AC4C800BAEF8A /* CGFloat + Extension.swift */,
+				DE2CAFF8256ACE0100BAEF8A /* GradientedCurvedBackgroundView.swift */,
+				DE2CAFFD256AD49600BAEF8A /* RoundedTextField.swift */,
 			);
 			path = "Custom UI";
 			sourceTree = "<group>";
@@ -509,11 +518,14 @@
 				DE2CAFC42565491900BAEF8A /* PasswordRecoveryViewController.swift in Sources */,
 				DE3CA7A32563F814009F787B /* ViewController + Charts.swift in Sources */,
 				DE2CAFC92565494400BAEF8A /* NetworkService.swift in Sources */,
+				DE2CAFFE256AD49600BAEF8A /* RoundedTextField.swift in Sources */,
+				DE2CAFF9256ACE0200BAEF8A /* GradientedCurvedBackgroundView.swift in Sources */,
 				DEF747F4256544B00099615F /* AuthService.swift in Sources */,
 				DE2CAFBF256548CB00BAEF8A /* RegistrationViewController.swift in Sources */,
 				DE2CAFB42565476500BAEF8A /* AuthenticationViewController.swift in Sources */,
 				DE2CAFDA25654B7900BAEF8A /* UIViewController + Extensions.swift in Sources */,
 				DE0313FC2562E36F00B0F2CB /* AppDelegate.swift in Sources */,
+				DE2CAFF4256AC4C800BAEF8A /* CGFloat + Extension.swift in Sources */,
 				DE0314372562EC2900B0F2CB /* DesignableButton.swift in Sources */,
 				DE0314442562FFA000B0F2CB /* DesignableView.swift in Sources */,
 				DE03143F2562F55300B0F2CB /* TransactionTableViewCell.swift in Sources */,
@@ -696,6 +708,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KN392APKS7;
 				INFOPLIST_FILE = "$(SRCROOT)/Wallet/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -716,6 +729,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KN392APKS7;
 				INFOPLIST_FILE = "$(SRCROOT)/Wallet/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

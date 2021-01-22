@@ -12,24 +12,14 @@ enum ResetResult {
   case failure(Error)
 }
 
-class RecoveryViewController: UIViewController {
+class PasswordRecoveryViewController: UIViewController {
   
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var emailTextField: UITextField!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-  @IBOutlet weak var resetCard: UIView!
-  
-  override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-      if UIDevice.current.userInterfaceIdiom == .phone {
-          return .portrait
-      } else {
-          return .all
-      }
-  }
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
-    resetCard.layer.cornerRadius = 4
     tapGestureRecognition()
   }
   
@@ -71,7 +61,7 @@ class RecoveryViewController: UIViewController {
   }
 }
 
-extension RecoveryViewController: UITextFieldDelegate {
+extension PasswordRecoveryViewController: UITextFieldDelegate {
   
   func textFieldsDelegateSetup() {
     emailTextField.delegate = self
